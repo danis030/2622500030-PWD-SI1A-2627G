@@ -19,7 +19,7 @@ nav ul {
     list-style: none;
 }
 nav a {
-    color: #5b0b0b;
+    color: #1d0065;
     font-weight: bold;
     text-decoration: none;
 }
@@ -27,7 +27,7 @@ body {
     margin:0;
     padding: 12px;
     font-family: Arial, sans-serif;
-    color: #111827;
+    color: #0454ff;
     background-color: #eef2f7;
 }
 
@@ -36,7 +36,7 @@ header {
     color: #ffffff;
     padding: 20px;
     margin-bottom: 20px;
-    border: 1px solid #00264d;
+    border: 1px solid #0080ff;
 }
 
 header h1 {
@@ -56,8 +56,8 @@ header h1 {
 }
 
 #home h2 {
-    color: #990a22;
-    border-bottom: 2px solid #400f81;
+    color: #26adf0;
+    border-bottom: 2px solid #0011ff;
     padding-bottom: 6px;
     margin-top:0px;
     margin-bottom: 16px;
