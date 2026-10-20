@@ -1,105 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertemuan 05 - Validasi Form</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Mahasiswa</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <h1 class="brand">Danis Dwi Saputra</h1>
-
-            <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Open menu" aria-controls="navMenu">
+    <header>
+        <div class="header-top">
+            <h1>Profil Mahasiswa</h1>
+            <button
+                class="nav-toggle"
+                id="navToggle"
+                type="button"
+                aria-label="Buka navigasi"
+                aria-controls="navMenu"
+                aria-expanded="false"
+            >
                 &#9776;
             </button>
-
-            <nav id="navMenu" class="nav-menu">
-                <a href="#beranda">Beranda</a>
-                <a href="#kontak">Kontak</a>
-            </nav>
         </div>
+        <nav aria-label="Navigasi utama">
+            <ul id="navMenu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="container">
-        <section id="beranda" class="intro">
-            <h2>Pertemuan 05</h2>
-            <p>Latihan validasi form menggunakan JavaScript.</p>
+    <main>
+        <section id="home">
+            <h2>Selamat Datang</h2>
+            <p>Halo, saya Danis Dwi Saputra. Saya sedang mempelajari Pemrograman Web Dasar.</p>
+            <img src="../fotoi.png" alt="Foto profil Danis Dwi Saputra" />
         </section>
 
-        <section id="kontak" class="card">
-            <h2>Form Kontak</h2>
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <article>
+                <h3>Profil Singkat</h3>
+                <p>Saya mahasiswa Program Studi Sistem Informasi.</p>
+                <h3>Target Belajar</h3>
+                <ol>
+                    <li>Memahami struktur HTML5.</li>
+                    <li>Menyusun halaman web semantik.</li>
+                    <li>Memvalidasi dokumen HTML.</li>
+                </ol>
+            </article>
+        </section>
 
-            <form id="contactForm" novalidate>
-                <div class="field">
-                    <label for="name">Nama</label>
-                    <input type="text" id="name" name="name" placeholder="Nama lengkap">
+        <section id="contact">
+            <h2>Kontak</h2>
+            <p>
+                Kunjungi
+                <a href="https://github.com/danis030">profil GitHub saya</a>.
+            </p>
+
+            <form id="contactForm" action="index.html" method="get" novalidate>
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label><br />
+                    <input
+                        class="input-form"
+                        type="text"
+                        id="nama"
+                        name="nama"
+                        placeholder="Masukkan nama lengkap"
+                        minlength="3"
+                        maxlength="50"
+                        required
+                    />
                 </div>
 
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="nama@email.com">
+                <div class="form-group">
+                    <label for="email">Email</label><br />
+                    <input
+                        class="input-form"
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="nama@email.com"
+                        required
+                    />
                 </div>
 
-                <div class="field">
-                    <label for="semester">Semester</label>
-                    <input type="number" id="semester" name="semester" placeholder="1 - 16">
+                <div class="form-group">
+                    <label for="semester">Semester</label><br />
+                    <input
+                        class="input-form"
+                        type="number"
+                        id="semester"
+                        name="semester"
+                        min="1"
+                        max="16"
+                        required
+                    />
                 </div>
 
-                <div class="field">
-                    <label for="date">Tanggal</label>
-                    <input type="date" id="date" name="date">
+                <div class="form-group">
+                    <label for="tanggal">Tanggal Kunjungan</label><br />
+                    <input
+                        class="input-form"
+                        type="date"
+                        id="tanggal"
+                        name="tanggal"
+                        required
+                    />
                 </div>
 
-                <div class="field">
-                    <label for="prodi">Program Studi</label>
-                    <input type="text" id="prodi" name="prodi" placeholder="Contoh: Sistem Informasi">
+                <div class="form-group">
+                    <p>Jenis Pesan</p>
+                    <input type="radio" id="pertanyaan" name="jenis_pesan" value="pertanyaan" required />
+                    <label for="pertanyaan">Pertanyaan</label>
+                    <input type="radio" id="saran" name="jenis_pesan" value="saran" />
+                    <label for="saran">Saran</label>
                 </div>
 
-                <fieldset class="field">
-                    <legend>Jenis Pesan</legend>
-                    <label class="inline">
-                        <input type="radio" name="messagetype" value="saran"> Saran
-                    </label>
-                    <label class="inline">
-                        <input type="radio" name="messagetype" value="pertanyaan"> Pertanyaan
-                    </label>
-                    <label class="inline">
-                        <input type="radio" name="messagetype" value="kritik"> Kritik
-                    </label>
-                </fieldset>
-
-                <fieldset class="field">
-                    <legend>Topik yang Diminati</legend>
-                    <label class="inline">
-                        <input type="checkbox" name="topic" value="html"> HTML
-                    </label>
-                    <label class="inline">
-                        <input type="checkbox" name="topic" value="css"> CSS
-                    </label>
-                    <label class="inline">
-                        <input type="checkbox" name="topic" value="javascript"> JavaScript
-                    </label>
-                </fieldset>
-
-                <div class="field">
-                    <label for="message">Pesan</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Tulis pesan (maks. 300 karakter)"></textarea>
+                <div class="form-group">
+                    <p>Topik yang Diminati</p>
+                    <input type="checkbox" id="minat-html" name="minat" value="HTML" />
+                    <label for="minat-html">HTML</label>
+                    <input type="checkbox" id="minat-css" name="minat" value="CSS" />
+                    <label for="minat-css">CSS</label>
                 </div>
 
-                <div class="actions">
-                    <button type="submit" class="btn btn-primary">Kirim</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
+                <div class="form-group">
+                    <label for="prodi">Program Studi</label><br />
+                    <select class="input-form" id="prodi" name="prodi" required>
+                        <option value="">-- Pilih Program Studi --</option>
+                        <option value="SI">Sistem Informasi</option>
+                        <option value="TI">Teknik Informatika</option>
+                    </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="pesan">Pesan</label><br />
+                    <textarea
+                        class="input-form"
+                        id="pesan"
+                        name="pesan"
+                        maxlength="300"
+                        placeholder="Tulis pesan Anda"
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit">Kirim</button>
+                <button type="reset">Batal</button>
                 <p id="formFeedback" class="form-feedback" role="alert"></p>
             </form>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Danis Dwi Saputra - 2622500030</p>
+    <footer>
+        <p>&copy; 2026 Danis Dwi Saputra 2622500030</p>
     </footer>
 
     <script src="script.js"></script>
