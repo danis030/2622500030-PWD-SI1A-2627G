@@ -54,6 +54,10 @@ if (!jenisPesan) {
 formFeedback.textContent = "Pilih jenis pesan.";
 return;
 }
+if (!jenisPesan) {
+formFeedback.textContent = "Pilih jenis pesan.";
+return;
+}
 if (topikDipilih.length === 0) {
 formFeedback.textContent = "Pilih minimal satu topik yang diminati.";
 return;
@@ -68,6 +72,7 @@ return;
 }
 if (pesan.length > 300) {
 formFeedback.textContent = "Pesan maksimal 300 karakter.";
+}
 formFeedback.textContent = "Form berhasil divalidasi.";
 formFeedback.className = "form-feedback-success";
 contactForm.submit();
