@@ -1,0 +1,294 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    padding: 15px;
+    max-width: 1000px;
+    font-family: Arial, sans-serif;
+    color: #111827;
+    background-color: #eef2f7;
+}
+
+/* Header */
+header {
+    background-color: #003366;
+    color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #00264d;
+    border-radius: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Menu navigasi (mobile: disembunyikan, dibuka oleh tombol) */
+#navMenu {
+    display: none;
+}
+
+/* Class ini ditambahkan oleh script.js saat tombol diklik */
+#navMenu.nav-open {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.nav-toggle {
+    display: block;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Layout utama */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+section {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Bagian Home */
+#home {
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    padding: 20px;
+    margin: 0;
+}
+
+#home h2 {
+    color: #003366;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 6px;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+#home p {
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+#home img {
+    display: block;
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+/* Bagian Tentang */
+#about {
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    padding: 20px;
+    margin: 0;
+}
+
+#about h2 {
+    color: #003366;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 6px;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+#about h3 {
+    color: #1f4e78;
+    margin-bottom: 6px;
+}
+
+#about p {
+    margin: 6px 0;
+    padding: 6px 0;
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 1.5;
+}
+
+#about ol {
+    color: #333333;
+    margin: 8px 0;
+    padding: 8px 24px;
+    border: 1px solid #e6e6e6;
+}
+
+/* Bagian Kontak */
+#contact {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 20px;
+    margin: 0;
+}
+
+#contact h2 {
+    color: #003366;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 6px;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    margin: 12px 0;
+}
+
+#contact label {
+    color: #1f2937;
+    font-weight: bold;
+}
+
+/* Label untuk radio dan checkbox dibuat tidak tebal */
+#contact input[type="radio"] + label,
+#contact input[type="checkbox"] + label {
+    font-weight: normal;
+    margin-right: 14px;
+}
+
+.input-form {
+    width: 100%;
+    max-width: 100%;
+    background-color: #ffffff;
+    color: #111827;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+}
+
+.input-form:focus {
+    outline: 2px solid #3b82f6;
+    border-color: #3b82f6;
+}
+
+#contact textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#contact button {
+    background-color: #003366;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 8px 14px;
+    margin: 8px 6px 0 0;
+    border: 1px solid #003366;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#contact button:hover {
+    background-color: #004a94;
+}
+
+#contact button[type="reset"] {
+    background-color: #e2e8f0;
+    color: #1f2937;
+    border-color: #cbd5e1;
+}
+
+#contact button[type="reset"]:hover {
+    background-color: #cbd5e1;
+}
+
+/* Pesan validasi (dipakai oleh script.js) */
+.form-feedback {
+    margin-top: 16px;
+    min-height: 1.5em;
+}
+
+.form-feedback-error {
+    margin-top: 16px;
+    color: #b00020;
+    font-weight: bold;
+}
+
+.form-feedback-success {
+    margin-top: 16px;
+    color: #1b7f3b;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #003366;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 20px;
+    margin-top: 20px;
+    border: 1px solid #00264d;
+    border-radius: 10px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Layar lebar: menu selalu tampil, tombol toggle disembunyikan,
+   Beranda dan Tentang berdampingan, Kontak selebar penuh */
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    #navMenu,
+    #navMenu.nav-open {
+        display: flex;
+        flex-direction: row;
+        margin-top: 16px;
+    }
+
+    nav ul {
+        flex-direction: row;
+        gap: 24px;
+    }
+
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #contact {
+        grid-column: 1 / -1;
+    }
+}
