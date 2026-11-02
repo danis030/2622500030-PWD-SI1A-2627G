@@ -127,11 +127,11 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
           <tr><td>NIM</td><td>: 2622500030</td></tr>
           <tr><td>Kelas</td><td>: SI1A</td></tr>
           <tr><td>Program Studi</td><td>: Sistem Informasi</td></tr>
-          <tr><td>Tempat, Tgl Lahir</td><td>: ..........</td></tr>
+          <tr><td>Tempat, Tgl Lahir</td><td>: Bandung, 15 Maret 2000</td></tr>
           <tr><td>Jenis Kelamin</td><td>: Laki-laki</td></tr>
-          <tr><td>Alamat</td><td>: ..........</td></tr>
+          <tr><td>Alamat</td><td>: Paris</td></tr>
           <tr><td>Email</td><td>: 2622500030@mahasiswa.atmaluhur.ac.id</td></tr>
-          <tr><td>Hobi</td><td>: ..........</td></tr>
+          <tr><td>Hobi</td><td>: Playing Video Games</td></tr>
           <tr><td>Motto</td><td>: "Drive your passion."</td></tr>
         </table>
       </div>
