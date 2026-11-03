@@ -58,7 +58,7 @@ body { font-family:"Segoe UI",Arial,sans-serif; background:var(--bg); color:#e8e
 /* ANIMASI JALAN */
 .jalan { position:relative; height:90px; overflow:hidden; background:#d9dde3; border:2px solid var(--garis); }
 .jalan::after { content:""; position:absolute; left:0; right:0; bottom:14px; border-top:4px dashed #777; }
-.jalan img { position:absolute; bottom:16px; height:56px; mix-blend-mode:multiply; transform:scaleX(-1); animation:melaju 6s linear infinite; }
+.jalan img { position:absolute; bottom:16px; height:56px; mix-blend-mode:multiply; animation:melaju 6s linear infinite; }
 @keyframes melaju { from { left:-150px; } to { left:100%; } }
 
 /* TABEL */
