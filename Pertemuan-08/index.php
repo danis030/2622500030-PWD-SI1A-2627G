@@ -42,7 +42,7 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
 
   <!-- ===== HEADER ===== -->
   <header id="header">
-    <div class="logo"><img src="images/logo.jpg" alt="Logo Bavaria Sport Motors"></div>
+    <div class="logo"><img src="logo.jpg" alt="Logo Bavaria Sport Motors"></div>
     <div class="judul">
       <h1>Bavaria <span>Sport</span> Motors</h1>
       <p>Showroom Mobil BMW Sport &bull; <span id="jam"></span></p>
@@ -72,7 +72,7 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
           <p>Showroom BMW sport terpercaya: unit baru, bekas berkualitas, kredit ringan, dan layanan performa lengkap.</p>
           <a class="tombol" href="?page=registrasi">Booking Test Drive</a>
         </div>
-        <div class="hero-gambar"><img src="images/m2.jpg" alt="BMW M2"></div>
+        <div class="hero-gambar"><img src="back.jpg" alt="BMW sport"></div>
       </section>
 
       <section class="statistik">
@@ -93,24 +93,26 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
 
       <h3>Koleksi Unggulan</h3>
       <div class="kartu-wrap">
-        <article class="kartu"><div class="kartu-img"><img src="images/m3.png" alt="BMW M3"></div>
-          <h4>BMW M3 Competition</h4><p>510 hp &bull; 0-100 km/jam 3,5 dtk</p></article>
-        <article class="kartu"><div class="kartu-img"><img src="images/m4-racing.webp" alt="BMW M4 Racing"></div>
-          <h4>BMW M4 Racing</h4><p>Livery M Power edisi balap</p></article>
-        <article class="kartu"><div class="kartu-img"><img src="images/konsep.png" alt="Concept Coupe"></div>
-          <h4>Concept Sport Coupe</h4><p>Desain futuristik &amp; aerodinamis</p></article>
+        <article class="kartu"><div class="kartu-img"><img src="i8.jpg" alt="BMW i8"></div>
+          <h4>BMW i8</h4><p>Plug-in hybrid sport &bull; 362 hp</p></article>
+        <article class="kartu"><div class="kartu-img"><img src="bm5.jpg" alt="BMW M5"></div>
+          <h4>BMW M5</h4><p>Sedan performa &bull; V8 Twin-Turbo</p></article>
+        <article class="kartu"><div class="kartu-img"><img src="m8.jpg" alt="BMW M8 Gran Coupe"></div>
+          <h4>BMW M8 Gran Coupe</h4><p>Flagship M &bull; V8 Twin-Turbo</p></article>
+        <article class="kartu"><div class="kartu-img"><img src="z4.jpg" alt="BMW Z4"></div>
+          <h4>BMW Z4</h4><p>Roadster sport &bull; Open top</p></article>
       </div>
 
       <h3>Mobil Melaju</h3>
-      <div class="jalan"><img src="images/mobil.svg" alt="Animasi mobil"></div>
+      <div class="jalan"><img src="animasi.jpg" alt="Animasi mobil sport"></div>
 
       <h3>Daftar Model &amp; Spesifikasi</h3>
       <table class="data">
         <tr><th>No</th><th>Model</th><th>Mesin</th><th>Tenaga</th><th>0-100 km/jam</th></tr>
-        <tr><td>1</td><td>BMW M2 Coupe</td><td>3.0L Twin-Turbo 6-Silinder</td><td>460 hp</td><td>4,1 dtk</td></tr>
-        <tr><td>2</td><td>BMW M3 Competition</td><td>3.0L Twin-Turbo 6-Silinder</td><td>510 hp</td><td>3,5 dtk</td></tr>
-        <tr><td>3</td><td>BMW M4 Coupe</td><td>3.0L Twin-Turbo 6-Silinder</td><td>510 hp</td><td>3,5 dtk</td></tr>
-        <tr><td>4</td><td>BMW M5</td><td>4.4L Twin-Turbo V8</td><td>600 hp</td><td>3,3 dtk</td></tr>
+        <tr><td>1</td><td>BMW i8</td><td>1.5L Turbo + Motor Listrik</td><td>362 hp</td><td>4,4 dtk</td></tr>
+        <tr><td>2</td><td>BMW M5</td><td>4.4L Twin-Turbo V8</td><td>600 hp</td><td>3,4 dtk</td></tr>
+        <tr><td>3</td><td>BMW M8 Gran Coupe</td><td>4.4L Twin-Turbo V8</td><td>600 hp</td><td>3,3 dtk</td></tr>
+        <tr><td>4</td><td>BMW Z4</td><td>3.0L Turbo 6-Silinder</td><td>340 hp</td><td>4,5 dtk</td></tr>
       </table>
 
 <?php elseif ($page === 'profile'): ?>
@@ -118,7 +120,7 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
       <h2 class="judul-hal">Biodata Pemilik</h2>
       <div class="profil">
         <div class="profil-foto">
-          <img src="images/foto.png" alt="Foto Danis Dwi Saputra">
+          <img src="foto.png" alt="Foto Danis Dwi Saputra">
           <h4>Danis Dwi Saputra</h4>
           <span>Founder &amp; Owner</span>
         </div>
@@ -180,7 +182,7 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
         <div class="baris"><label for="model">Model yang Diminati</label>
           <select id="model" name="model">
             <option value="">-- Pilih Model --</option>
-            <?php foreach (['BMW M2 Coupe','BMW M3 Competition','BMW M4 Coupe','BMW M5'] as $m): ?>
+            <?php foreach (['BMW i8','BMW M5','BMW M8 Gran Coupe','BMW Z4'] as $m): ?>
               <option <?= (($_POST['model'] ?? '') === $m) ? 'selected' : '' ?>><?= $m ?></option>
             <?php endforeach; ?>
           </select></div>
