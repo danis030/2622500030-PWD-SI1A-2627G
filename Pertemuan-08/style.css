@@ -108,3 +108,45 @@ input.salah { border-color:var(--merah); }
   .hero h2 { font-size:1.5rem; }
   .dua { grid-template-columns:1fr; }
 }
+
+/* ===== EFEK MUNCUL SAAT SCROLL ===== */
+.js .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.js .reveal.tampil { opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce) { .js .reveal { opacity:1; transform:none; transition:none; } }
+
+/* ===== CTA ===== */
+.cta { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:16px 20px; margin-top:20px; background:#10141b; border:1px solid var(--garis); border-left:5px solid var(--merah); border-radius:6px; }
+
+/* ===== KATALOG ===== */
+.filter { display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 18px; }
+.filter button { background:#10141b; color:#ddd; border:1px solid var(--garis); padding:8px 18px; border-radius:20px; cursor:pointer; font:inherit; font-weight:700; transition:.25s; }
+.filter button:hover { border-color:var(--biru-muda); }
+.filter button.aktif { background:var(--biru); border-color:var(--biru); color:#fff; }
+.kat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; }
+.kat-kartu { background:#10141b; border:1px solid var(--garis); border-radius:8px; overflow:hidden; transition:.3s; }
+.kat-kartu:hover { transform:translateY(-6px); border-color:var(--biru-muda); box-shadow:0 10px 24px rgba(28,105,212,.35); }
+.kat-kartu.sembunyi { display:none; }
+.kat-isi { padding:14px; }
+.kat-isi h4 { margin:6px 0; font-size:1.1rem; }
+.kat-isi ul { list-style:none; font-size:.88rem; color:#9fb0c8; margin-bottom:10px; }
+.lencana { display:inline-block; background:var(--merah); color:#fff; font-size:.72rem; font-weight:700; padding:2px 10px; border-radius:10px; letter-spacing:1px; text-transform:uppercase; }
+.harga { color:var(--biru-muda); font-weight:700; font-size:1.15rem; margin-bottom:10px; }
+.tombol.kecil { padding:8px 16px; font-size:.88rem; }
+.kosong { text-align:center; padding:20px; color:#9fb0c8; }
+
+/* ===== KALKULATOR ===== */
+.kalkulator { max-width:none; background:#10141b; border:1px solid var(--garis); border-top:3px solid var(--biru); border-radius:6px; padding:20px; }
+input[type=number] { width:100%; padding:10px; background:#0b0e13; color:#fff; border:1px solid var(--garis); border-radius:4px; font:inherit; }
+input[type=range] { width:100%; accent-color:var(--merah); margin-top:6px; }
+.hasil-cicilan { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:8px 0 12px; }
+.hasil-cicilan div { background:#0b0e13; border:1px solid var(--garis); padding:12px; text-align:center; }
+.hasil-cicilan span { display:block; font-size:.82rem; color:#9fb0c8; }
+.hasil-cicilan b { font-size:1.15rem; color:#fff; }
+.hasil-cicilan .besar { border-color:var(--merah); }
+.hasil-cicilan .besar b { color:var(--biru-muda); font-size:1.4rem; }
+
+/* ===== KONTAK ===== */
+.kontak-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+.kontak-grid h3 { margin-top:0 !important; }
+.kontak-info h3:not(:first-child) { margin-top:22px !important; }
+@media (max-width:760px) { .kontak-grid { grid-template-columns:1fr; } }
