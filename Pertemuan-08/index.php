@@ -1,6 +1,15 @@
 <?php
 // Halaman yang diizinkan (whitelist) agar aman
-$halaman = ['home' => 'Home', 'profile' => 'Profile', 'registrasi' => 'Registrasi'];
+$halaman = ['home' => 'Home', 'katalog' => 'Katalog', 'profile' => 'Profile', 'registrasi' => 'Registrasi', 'kontak' => 'Kontak'];
+
+// Data katalog (harga bersifat ilustrasi untuk tugas)
+$mobil = [
+  ['nama' => 'BMW i8',            'foto' => 'i8.jpg',  'kat' => 'Hybrid',  'mesin' => '1.5L Turbo + Motor Listrik', 'hp' => 362, 'akselerasi' => '4,4 dtk', 'harga' => 3800000000],
+  ['nama' => 'BMW M5',            'foto' => 'bm5.jpg', 'kat' => 'Sedan',   'mesin' => '4.4L Twin-Turbo V8',         'hp' => 600, 'akselerasi' => '3,4 dtk', 'harga' => 4500000000],
+  ['nama' => 'BMW M8 Gran Coupe', 'foto' => 'm8.jpg',  'kat' => 'Coupe',   'mesin' => '4.4L Twin-Turbo V8',         'hp' => 600, 'akselerasi' => '3,3 dtk', 'harga' => 5200000000],
+  ['nama' => 'BMW Z4',            'foto' => 'z4.jpg',  'kat' => 'Roadster','mesin' => '3.0L Turbo 6-Silinder',      'hp' => 340, 'akselerasi' => '4,5 dtk', 'harga' => 1900000000],
+];
+function rupiah($n) { return 'Rp ' . number_format($n, 0, ',', '.'); }
 $page = $_GET['page'] ?? 'home';
 if (!isset($halaman[$page])) { $page = 'home'; }
 
@@ -26,6 +35,18 @@ if ($page === 'registrasi' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$error) {
         $hasil = compact('nama', 'email', 'hp', 'tgl', 'jk', 'model', 'bayar', 'pesan');
     }
+}
+// Proses form kontak (PHP)
+$kontakOk = null;
+$kontakErr = [];
+if ($page === 'kontak' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $k_nama  = trim($_POST['k_nama'] ?? '');
+    $k_email = trim($_POST['k_email'] ?? '');
+    $k_pesan = trim($_POST['k_pesan'] ?? '');
+    if ($k_nama === '') $kontakErr[] = 'Nama wajib diisi.';
+    if (!filter_var($k_email, FILTER_VALIDATE_EMAIL)) $kontakErr[] = 'Format email tidak valid.';
+    if (strlen($k_pesan) < 10) $kontakErr[] = 'Pesan minimal 10 karakter.';
+    if (!$kontakErr) { $kontakOk = ['nama' => $k_nama, 'email' => $k_email, 'pesan' => $k_pesan]; }
 }
 function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
 ?>
@@ -114,6 +135,122 @@ function e($s) { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
         <tr><td>3</td><td>BMW M8 Gran Coupe</td><td>4.4L Twin-Turbo V8</td><td>600 hp</td><td>3,3 dtk</td></tr>
         <tr><td>4</td><td>BMW Z4</td><td>3.0L Turbo 6-Silinder</td><td>340 hp</td><td>4,5 dtk</td></tr>
       </table>
+      <p><small>*Spesifikasi bersifat ilustrasi untuk keperluan tugas.</small></p>
+
+      <div class="cta">
+        <div><b>Ingin tahu cicilan per bulan?</b><br>Coba kalkulator cicilan di halaman Katalog.</div>
+        <a class="tombol" href="?page=katalog#kalkulator">Hitung Cicilan</a>
+      </div>
+
+<?php elseif ($page === 'katalog'): ?>
+
+      <h2 class="judul-hal">Katalog Mobil BMW Sport</h2>
+      <p>Pilih kategori untuk menyaring daftar mobil.</p>
+
+      <div class="filter" id="filter">
+        <button type="button" class="aktif" data-kat="Semua">Semua</button>
+        <?php foreach (array_unique(array_column($mobil, 'kat')) as $kat): ?>
+          <button type="button" data-kat="<?= e($kat) ?>"><?= e($kat) ?></button>
+        <?php endforeach; ?>
+      </div>
+
+      <div class="kat-grid" id="katGrid">
+        <?php foreach ($mobil as $m): ?>
+          <article class="kat-kartu" data-kat="<?= e($m['kat']) ?>">
+            <div class="kartu-img"><img src="<?= e($m['foto']) ?>" alt="<?= e($m['nama']) ?>"></div>
+            <div class="kat-isi">
+              <span class="lencana"><?= e($m['kat']) ?></span>
+              <h4><?= e($m['nama']) ?></h4>
+              <ul>
+                <li>Mesin: <?= e($m['mesin']) ?></li>
+                <li>Tenaga: <?= $m['hp'] ?> hp</li>
+                <li>0-100 km/jam: <?= e($m['akselerasi']) ?></li>
+              </ul>
+              <div class="harga"><?= rupiah($m['harga']) ?></div>
+              <a class="tombol kecil" href="?page=registrasi">Booking Test Drive</a>
+            </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+      <p id="kosong" class="kosong" hidden>Tidak ada mobil di kategori ini.</p>
+      <p><small>*Harga dan spesifikasi bersifat ilustrasi untuk keperluan tugas.</small></p>
+
+      <h3 id="kalkulator">Kalkulator Cicilan</h3>
+      <form class="kalkulator" onsubmit="return false">
+        <div class="dua">
+          <div class="baris"><label for="c_model">Pilih Mobil</label>
+            <select id="c_model">
+              <?php foreach ($mobil as $m): ?>
+                <option value="<?= $m['harga'] ?>"><?= e($m['nama']) ?> - <?= rupiah($m['harga']) ?></option>
+              <?php endforeach; ?>
+            </select></div>
+          <div class="baris"><label for="c_dp">Uang Muka (DP): <b id="c_dp_tampil">20</b>%</label>
+            <input type="range" id="c_dp" min="10" max="70" step="5" value="20"></div>
+        </div>
+        <div class="dua">
+          <div class="baris"><label for="c_tenor">Lama Cicilan</label>
+            <select id="c_tenor">
+              <option value="12">1 tahun (12 bulan)</option>
+              <option value="24">2 tahun (24 bulan)</option>
+              <option value="36" selected>3 tahun (36 bulan)</option>
+              <option value="48">4 tahun (48 bulan)</option>
+              <option value="60">5 tahun (60 bulan)</option>
+            </select></div>
+          <div class="baris"><label for="c_bunga">Bunga per tahun (%)</label>
+            <input type="number" id="c_bunga" value="6" min="0" max="30" step="0.5"></div>
+        </div>
+        <div class="hasil-cicilan">
+          <div><span>Uang Muka</span><b id="h_dp">-</b></div>
+          <div><span>Pokok Pinjaman</span><b id="h_pokok">-</b></div>
+          <div class="besar"><span>Cicilan per Bulan</span><b id="h_cicilan">-</b></div>
+        </div>
+        <small>*Perhitungan bunga flat, hanya simulasi dan bukan penawaran resmi.</small>
+      </form>
+
+<?php elseif ($page === 'kontak'): ?>
+
+      <h2 class="judul-hal">Hubungi Kami</h2>
+
+      <div class="kontak-grid">
+        <div class="kontak-info">
+          <h3>Alamat Showroom</h3>
+          <p>Bavaria Sport Motors<br>Jl. Raya Bekasi No. 88<br>Bekasi, Jawa Barat 17111</p>
+
+          <h3>Kontak</h3>
+          <p>Telepon: (021) 555-0188<br>WhatsApp: 0812-3456-7890<br>Email: info@bavariasport.test</p>
+
+          <h3>Jam Buka</h3>
+          <table class="data">
+            <tr><th>Hari</th><th>Jam</th></tr>
+            <tr><td>Senin - Jumat</td><td>09.00 - 18.00</td></tr>
+            <tr><td>Sabtu</td><td>09.00 - 16.00</td></tr>
+            <tr><td>Minggu</td><td>10.00 - 14.00 (dengan janji)</td></tr>
+          </table>
+        </div>
+
+        <div class="kontak-form">
+          <h3>Kirim Pesan</h3>
+
+          <?php if ($kontakErr): ?>
+            <div class="alert merah"><b>Periksa kembali:</b>
+              <ul><?php foreach ($kontakErr as $er): ?><li><?= e($er) ?></li><?php endforeach; ?></ul>
+            </div>
+          <?php endif; ?>
+          <?php if ($kontakOk): ?>
+            <div class="alert hijau"><b>Terima kasih, <?= e($kontakOk['nama']) ?>!</b> Pesan Anda sudah kami terima dan akan dibalas ke <?= e($kontakOk['email']) ?>.</div>
+          <?php endif; ?>
+
+          <form method="post" action="?page=kontak">
+            <div class="baris"><label for="k_nama">Nama</label>
+              <input type="text" id="k_nama" name="k_nama" value="<?= $kontakOk ? '' : e($_POST['k_nama'] ?? '') ?>" placeholder="Nama Anda"></div>
+            <div class="baris"><label for="k_email">Email</label>
+              <input type="email" id="k_email" name="k_email" value="<?= $kontakOk ? '' : e($_POST['k_email'] ?? '') ?>" placeholder="nama@email.com"></div>
+            <div class="baris"><label for="k_pesan">Pesan</label>
+              <textarea id="k_pesan" name="k_pesan" rows="5" placeholder="Tulis pesan Anda..."><?= $kontakOk ? '' : e($_POST['k_pesan'] ?? '') ?></textarea></div>
+            <button type="submit" class="tombol">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
 
 <?php elseif ($page === 'profile'): ?>
 
